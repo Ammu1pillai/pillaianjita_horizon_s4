@@ -62,17 +62,18 @@ while run:
                     circles.append(curr)
                     curr = 0
                 start = 0
-
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                circles.clear()
+        
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 3:
                 circles.remove(circles[len(circles)-1])
-                
-                
-                    
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                circles.clear()
+    
+
+
     for circle in circles:
         circle.draw(win)
 
@@ -91,5 +92,9 @@ while run:
         
             
     pygame.display.update()
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_s]:
+                pygame.image.save(win, "image.png")
+                print("Image saved")
     
 pygame.quit() 
